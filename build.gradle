@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.practice'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.1'
+
+    implementation 'org.springframework.boot:spring-boot-starter:3.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.0.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+
+
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
+    implementation 'org.jetbrains:annotations:23.0.0'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+
+
+    apply plugin: 'groovy'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
